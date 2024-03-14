@@ -1,0 +1,11 @@
+framework module RPPGCore {
+  umbrella header "RPPGCore.h"
+
+  export *
+  module * { export * }
+}
+
+module RPPGCore.Swift {
+  header "RPPGCore-Swift.h"
+  requires objc
+}

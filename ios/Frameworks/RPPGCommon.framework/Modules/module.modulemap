@@ -1,0 +1,11 @@
+framework module RPPGCommon {
+  umbrella header "RPPGCommon.h"
+
+  export *
+  module * { export * }
+}
+
+module RPPGCommon.Swift {
+  header "RPPGCommon-Swift.h"
+  requires objc
+}

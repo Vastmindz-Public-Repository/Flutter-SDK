@@ -1,0 +1,493 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RPPGCommon
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import CoreImage
+import Darwin
+import Foundation
+import MLKit
+@_exported import RPPGCommon
+import RPPGCore
+import Starscream
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+public enum RPPGSocketEvent {
+  case connected
+  case disconnected(Swift.String)
+  case cancelled
+  case message(RPPGCommon.RPPGSocketMessage)
+}
+public struct RPPGSocketMessage : Swift.Decodable {
+  public enum MessageType : Swift.Equatable {
+    case data(data: RPPGCommon.RPPGSocketMessageData)
+    case meanData(data: RPPGCommon.RPPGSocketMessageMeanData)
+    case status(data: RPPGCommon.RPPGSocketMessageDataStatus)
+    case rateWarning(data: RPPGCommon.RPPGSocketMessageSendingRateWarning)
+    case moveWarning
+    case progress(data: RPPGCommon.RPPGSocketMessageProgress)
+    case signal(data: RPPGCommon.RPPGSocketMessageSignal)
+    case accessToken(data: RPPGCommon.RPPGSocketMessageToken)
+    case bloodPressure(data: RPPGCommon.RPPGSocketMessageBloodPressure)
+    case signalQuality(data: RPPGCommon.RPPGSocketMessageSignalQuality)
+    case hrvMetrics(data: RPPGCommon.RPPGSocketMessageHeartRateVariability)
+    case raw(data: Swift.String)
+    case unknown
+    public static func == (lhs: RPPGCommon.RPPGSocketMessage.MessageType, rhs: RPPGCommon.RPPGSocketMessage.MessageType) -> Swift.Bool
+  }
+  public var messageType: RPPGCommon.RPPGSocketMessage.MessageType {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public static func rawMessage(_ message: Swift.String) -> RPPGCommon.RPPGSocketMessage
+}
+extension RPPGCommon.RPPGSocketMessage : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessage, rhs: RPPGCommon.RPPGSocketMessage) -> Swift.Bool
+}
+public protocol RPPGFaceDetectionServiceProtocol {
+  func processCamera(sampleBuffer: CoreMedia.CMSampleBuffer, imageInfo: RPPGCommon.RPPGImageInfo) -> Swift.Result<[RPPGCommon.RPPGDetectedFace], Swift.Error>
+}
+public class RPPGFaceDetectionService : RPPGCommon.RPPGFaceDetectionServiceProtocol {
+  public init(faceDetectorOptions: MLKitFaceDetection.FaceDetectorOptions = RPPGFaceDetectionService.defaultOptions)
+  public static var defaultOptions: MLKitFaceDetection.FaceDetectorOptions {
+    get
+  }
+  public func processCamera(sampleBuffer: CoreMedia.CMSampleBuffer, imageInfo: RPPGCommon.RPPGImageInfo) -> Swift.Result<[RPPGCommon.RPPGDetectedFace], Swift.Error>
+  @objc deinit
+}
+public struct RPPGSocketMessageHeartRateVariability : Swift.Decodable {
+  public let ibi: Swift.Float
+  public let rmssd: Swift.Float
+  public let sdnn: Swift.Float
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageHeartRateVariability : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageHeartRateVariability, rhs: RPPGCommon.RPPGSocketMessageHeartRateVariability) -> Swift.Bool
+}
+public struct RPPGSocketMessageSendingRateWarning : Swift.Decodable {
+  public let delay: Swift.Int?
+  public let message: Swift.String?
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageSendingRateWarning : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageSendingRateWarning, rhs: RPPGCommon.RPPGSocketMessageSendingRateWarning) -> Swift.Bool
+}
+public struct RPPGDetectedFaceContour {
+  public enum ContourType : Swift.Int {
+    case face
+    case leftEyebrowTop
+    case leftEyebrowBottom
+    case rightEyebrowTop
+    case rightEyebrowBottom
+    case leftEye
+    case rightEye
+    case upperLipTop
+    case upperLipBottom
+    case lowerLipTop
+    case lowerLipBottom
+    case noseBridge
+    case noseBottom
+    case leftCheek
+    case rightCheek
+    case unknown
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public let points: [CoreFoundation.CGPoint]
+  public let type: RPPGCommon.RPPGDetectedFaceContour.ContourType
+  public init(points: [CoreFoundation.CGPoint], type: RPPGCommon.RPPGDetectedFaceContour.ContourType)
+  public func transformedForRppgLib(angle: CoreFoundation.CGFloat, imageSize: CoreFoundation.CGSize) -> RPPGCommon.RPPGDetectedFaceContour
+}
+@objc public enum RPPGFacadeState : Swift.Int {
+  case initial
+  case prepared
+  case videoStarted
+  case analysisRunning
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum RPPGAnalysisInterruptionReason : Swift.Int {
+  case videoSessionStopped
+  case webSocketFailed
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol RPPGCommonFacadeDelegate : AnyObject {
+  func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveEventFromSocket event: RPPGCommon.RPPGSocketEvent)
+  func facade(_ facade: RPPGCommon.RPPGCommonFacade, analysisInterrupted reason: RPPGCommon.RPPGAnalysisInterruptionReason, error: Swift.Error?)
+}
+public protocol RPPGCommonFacadeDiagnosticsDelegate : AnyObject {
+  func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveImageQualityData data: RPPGCommon.RPPGImageQualityData)
+}
+@objc public protocol RPPGCommonFacadeRawDelegate {
+  @objc func facadeDidReceiveSocketConnected(_ facade: RPPGCommon.RPPGCommonFacade)
+  @objc func facadeDidReceiveSocketDisconnected(_ facade: RPPGCommon.RPPGCommonFacade)
+  @objc func facadeDidReceiveSocketCancelled(_ facade: RPPGCommon.RPPGCommonFacade)
+  @objc func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveMessageFromSocket message: Swift.String)
+  @objc func facade(_ facade: RPPGCommon.RPPGCommonFacade, analysisInterrupted reason: RPPGCommon.RPPGAnalysisInterruptionReason, error: Swift.Error?)
+  @objc func facade(_ facade: RPPGCommon.RPPGCommonFacade, interruptionWithReason reason: Swift.String)
+}
+public protocol RPPGCommonFacadeProtocol {
+  var delegate: RPPGCommon.RPPGCommonFacadeDelegate? { get set }
+  var diagnosticsDelegate: RPPGCommon.RPPGCommonFacadeDiagnosticsDelegate? { get set }
+  var rawDelegate: RPPGCommon.RPPGCommonFacadeRawDelegate? { get set }
+  var state: RPPGCommon.RPPGFacadeState { get }
+  var cameraView: RPPGCommon.RPPGCameraView { get }
+  var version: Swift.String { get }
+  func configure(settings: RPPGCommon.RPPGVideoSessionSettings)
+  func askPermissions(completion: @escaping (Swift.Bool) -> Swift.Void)
+  func startVideo()
+  func stopVideo()
+  func startAnalysis(socketURL: Foundation.URL)
+  func stopAnalysis()
+  static func enableDebugLogs(_ shouldEnable: Swift.Bool)
+}
+@_inheritsConvenienceInitializers @objc public class RPPGCommonFacade : ObjectiveC.NSObject, RPPGCommon.RPPGCommonFacadeProtocol {
+  @objc override dynamic public init()
+  weak public var delegate: RPPGCommon.RPPGCommonFacadeDelegate? {
+    get
+    set
+  }
+  weak public var diagnosticsDelegate: RPPGCommon.RPPGCommonFacadeDiagnosticsDelegate? {
+    get
+    set
+  }
+  @objc weak public var rawDelegate: RPPGCommon.RPPGCommonFacadeRawDelegate?
+  @objc public var state: RPPGCommon.RPPGFacadeState {
+    get
+  }
+  @objc public var cameraView: RPPGCommon.RPPGCameraView {
+    @objc get
+  }
+  @objc public var version: Swift.String {
+    @objc get
+  }
+  @objc public func configure(settings: RPPGCommon.RPPGVideoSessionSettings)
+  @objc public func askPermissions(completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public func startVideo()
+  @objc public func stopVideo()
+  @objc public func startAnalysis(socketURL: Foundation.URL)
+  @objc public func stopAnalysis()
+  @objc public static func enableDebugLogs(_ shouldEnable: Swift.Bool)
+  @objc deinit
+}
+extension RPPGCommon.RPPGCommonFacade : RPPGCommon.RPPGVideoSessionServiceDelegate {
+  public func imageReceived(_ sampleBuffer: CoreMedia.CMSampleBuffer, imageInfo: RPPGCommon.RPPGImageInfo)
+  public func sessionStopped(error: Swift.Error?)
+}
+extension RPPGCommon.RPPGCommonFacade : RPPGCommon.RPPGSocketManagerDelegate {
+  public func handle(event: RPPGCommon.RPPGSocketEvent)
+  public func handle(error: Swift.Error?)
+}
+extension RPPGCommon.RPPGCommonFacade : RPPGCommon.RPPGSocketManagerRawDelegate {
+  public func handleRawConnected()
+  public func handleRawDisconnected()
+  public func handleRawCancelled()
+  public func handleRaw(message: Swift.String)
+  public func handleRaw(error: Swift.Error?)
+}
+public struct RPPGSocketMessageMeanData : Swift.Decodable {
+  public enum StressStatus : Swift.String, Swift.Decodable, Swift.CaseIterable {
+    case noData
+    case low
+    case normal
+    case elevated
+    case veryHigh
+    public var localizedDescription: Swift.String? {
+      get
+    }
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RPPGCommon.RPPGSocketMessageMeanData.StressStatus]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RPPGCommon.RPPGSocketMessageMeanData.StressStatus] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum BloodPressureStatus : Swift.String, Swift.Decodable, Swift.CaseIterable {
+    case noData
+    case normal
+    case elevated
+    case hypS1
+    case hypS2
+    case hypCrisis
+    public var localizedDescription: Swift.String? {
+      get
+    }
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RPPGCommon.RPPGSocketMessageMeanData.BloodPressureStatus]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RPPGCommon.RPPGSocketMessageMeanData.BloodPressureStatus] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum AfibRiskStatus : Swift.String, Swift.Decodable {
+    case noData
+    case low
+    case normal
+    case elevated
+    case veryHigh
+    public var localizedDescription: Swift.String? {
+      get
+    }
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let bpm: Swift.Double?
+  public let respirationRate: Swift.Double?
+  public let oxygenSaturation: Swift.Double?
+  public let stressStatus: RPPGCommon.RPPGSocketMessageMeanData.StressStatus?
+  public let bloodPressureStatus: RPPGCommon.RPPGSocketMessageMeanData.BloodPressureStatus?
+  public let afibRiskStatus: RPPGCommon.RPPGSocketMessageMeanData.AfibRiskStatus?
+  public init(bpm: Swift.Double, respirationRate: Swift.Double, oxygenSaturation: Swift.Double, stressStatus: RPPGCommon.RPPGSocketMessageMeanData.StressStatus, bloodPressureStatus: RPPGCommon.RPPGSocketMessageMeanData.BloodPressureStatus, afibRiskStatus: RPPGCommon.RPPGSocketMessageMeanData.AfibRiskStatus? = nil)
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageMeanData : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageMeanData, rhs: RPPGCommon.RPPGSocketMessageMeanData) -> Swift.Bool
+}
+extension RPPGCommon.RPPGDetectedFace {
+  public func rppgLandmarks(with imageSize: CoreFoundation.CGSize) -> [RPPGCore.RPPGLandmark]
+}
+public struct RPPGSocketMessageDataStatus : Swift.Decodable {
+  public enum StatusCode : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case success
+    case noFace
+    case faceLost
+    case calibrating
+    case recalibrating
+    case brightLightIssue
+    case noiseDuringExecution
+    public func localizedDescription() -> Swift.String
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [RPPGCommon.RPPGSocketMessageDataStatus.StatusCode]
+    public typealias RawValue = Swift.String
+    public static var allCases: [RPPGCommon.RPPGSocketMessageDataStatus.StatusCode] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let statusCode: RPPGCommon.RPPGSocketMessageDataStatus.StatusCode?
+  public let statusMessage: Swift.String?
+  public init(statusCode: RPPGCommon.RPPGSocketMessageDataStatus.StatusCode)
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageDataStatus : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageDataStatus, rhs: RPPGCommon.RPPGSocketMessageDataStatus) -> Swift.Bool
+}
+public struct RPPGSocketSignalBGR : Swift.Encodable {
+  public init(timestamp: Swift.Double, bgrSignal: [Swift.Double])
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct RPPGSocketMessageProgress : Swift.Decodable {
+  public let progressPercent: Swift.Int?
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageProgress : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageProgress, rhs: RPPGCommon.RPPGSocketMessageProgress) -> Swift.Bool
+}
+extension CoreImage.CIImage {
+  public func cgImage() -> CoreGraphics.CGImage?
+  public func rotate(rotationAngle: CoreFoundation.CGFloat) -> CoreImage.CIImage
+}
+public struct RPPGSocketMessageSignal : Swift.Decodable {
+  public let signalValues: [Swift.Int]?
+  public init(signalValues: [Swift.Int])
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageSignal : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageSignal, rhs: RPPGCommon.RPPGSocketMessageSignal) -> Swift.Bool
+}
+public struct RPPGImageInfo {
+  public let size: CoreFoundation.CGSize
+  public let imageOrientation: UIKit.UIImage.Orientation
+  public init(size: CoreFoundation.CGSize, imageOrientation: UIKit.UIImage.Orientation)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class RPPGCameraView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public var meshColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public class var layerClass: Swift.AnyClass {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSublayers(of layer: QuartzCore.CALayer)
+  @_Concurrency.MainActor(unsafe) public func drawMesh(for face: RPPGCommon.RPPGDetectedFace, imageSize: CoreFoundation.CGSize)
+  @objc @_Concurrency.MainActor(unsafe) public func cleanMesh()
+  @objc deinit
+}
+public struct RPPGSocketMessageToken : Swift.Decodable {
+  public let accessToken: Swift.String?
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageToken : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageToken, rhs: RPPGCommon.RPPGSocketMessageToken) -> Swift.Bool
+}
+public struct RPPGSocketMessageSignalQuality : Swift.Decodable {
+  public let snr: Swift.Float
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageSignalQuality : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageSignalQuality, rhs: RPPGCommon.RPPGSocketMessageSignalQuality) -> Swift.Bool
+}
+public struct RPPGDetectedFace {
+  public let frame: CoreFoundation.CGRect
+  public let contours: [RPPGCommon.RPPGDetectedFaceContour]
+  public init(frame: CoreFoundation.CGRect, contours: [RPPGCommon.RPPGDetectedFaceContour])
+  public func contourOf(type: RPPGCommon.RPPGDetectedFaceContour.ContourType) -> RPPGCommon.RPPGDetectedFaceContour?
+}
+public protocol RPPGSocketManagerDelegate : AnyObject {
+  func handle(event: RPPGCommon.RPPGSocketEvent)
+  func handle(error: Swift.Error?)
+}
+public protocol RPPGSocketManagerRawDelegate : AnyObject {
+  func handleRawConnected()
+  func handleRawDisconnected()
+  func handleRawCancelled()
+  func handleRaw(message: Swift.String)
+  func handleRaw(error: Swift.Error?)
+}
+public protocol RPPGSocketManagerProtocol {
+  var delegate: RPPGCommon.RPPGSocketManagerDelegate? { get set }
+  var rawDelegate: RPPGCommon.RPPGSocketManagerRawDelegate? { get set }
+  var isReadyToUse: Swift.Bool { get }
+  func connect()
+  func disconnect()
+  func update(string: Swift.String)
+}
+public class RPPGSocketManager : RPPGCommon.RPPGSocketManagerProtocol {
+  public init(url: Foundation.URL)
+  weak public var delegate: RPPGCommon.RPPGSocketManagerDelegate? {
+    get
+    set
+  }
+  weak public var rawDelegate: RPPGCommon.RPPGSocketManagerRawDelegate?
+  public var isReadyToUse: Swift.Bool {
+    get
+  }
+  public func connect()
+  public func disconnect()
+  public func update(string: Swift.String)
+  @objc deinit
+}
+extension RPPGCommon.RPPGSocketManager : Starscream.WebSocketDelegate {
+  public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
+}
+public enum RPPGVideoSessionServiceError : Swift.Error {
+  case notPrepared
+  case failedToInitializeInputDevice(error: Swift.Error?)
+  case failedToConfigureInputDevice(error: Swift.Error?)
+  case failedToAddInputDevice
+  case failedToAddOutputDevice
+  case undefined
+}
+public protocol RPPGVideoSessionServiceProtocol : AnyObject {
+  var delegate: RPPGCommon.RPPGVideoSessionServiceDelegate? { get set }
+  var cameraView: RPPGCommon.RPPGCameraView { get }
+  func askPermissions(completion: @escaping (Swift.Bool) -> Swift.Void)
+  func prepare(settings: RPPGCommon.RPPGVideoSessionSettings) -> Swift.Result<Swift.Void, RPPGCommon.RPPGVideoSessionServiceError>
+  func start() -> Swift.Result<Swift.Void, RPPGCommon.RPPGVideoSessionServiceError>
+  func stop()
+}
+public protocol RPPGVideoSessionServiceDelegate : AnyObject {
+  func imageReceived(_ sampleBuffer: CoreMedia.CMSampleBuffer, imageInfo: RPPGCommon.RPPGImageInfo)
+  func sessionStopped(error: Swift.Error?)
+}
+@objc @_inheritsConvenienceInitializers public class RPPGVideoSessionService : ObjectiveC.NSObject, RPPGCommon.RPPGVideoSessionServiceProtocol {
+  weak public var delegate: RPPGCommon.RPPGVideoSessionServiceDelegate?
+  @objc deinit
+  public var cameraView: RPPGCommon.RPPGCameraView {
+    get
+  }
+  public func prepare(settings: RPPGCommon.RPPGVideoSessionSettings = .default) -> Swift.Result<Swift.Void, RPPGCommon.RPPGVideoSessionServiceError>
+  public func askPermissions(completion: @escaping (Swift.Bool) -> Swift.Void)
+  public func start() -> Swift.Result<Swift.Void, RPPGCommon.RPPGVideoSessionServiceError>
+  public func stop()
+  @objc override dynamic public init()
+}
+extension RPPGCommon.RPPGVideoSessionService : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+public struct RPPGImageQualityData {
+  public let isBrightColor: Swift.Bool
+  public let isIlluminationChanges: Swift.Bool
+  public let isNoisy: Swift.Bool
+  public let isSharp: Swift.Bool
+}
+public struct RPPGSocketMessageData : Swift.Decodable {
+  public let bpm: Swift.Double?
+  public let respirationRate: Swift.Double?
+  public let oxygenSaturation: Swift.Double?
+  public init(bpm: Swift.Double, respirationRate: Swift.Double, oxygenSaturation: Swift.Double)
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageData : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageData, rhs: RPPGCommon.RPPGSocketMessageData) -> Swift.Bool
+}
+@objc public class RPPGVideoSessionSettings : ObjectiveC.NSObject {
+  @objc final public let fps: CoreMedia.CMTimeScale
+  @objc public enum CameraPosition : Swift.Int {
+    case front
+    case back
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc final public let cameraPosition: RPPGCommon.RPPGVideoSessionSettings.CameraPosition
+  @objc public init(fps: CoreMedia.CMTimeScale = 30, cameraPosition: RPPGCommon.RPPGVideoSessionSettings.CameraPosition = .front)
+  @objc public static var `default`: RPPGCommon.RPPGVideoSessionSettings {
+    @objc get
+  }
+  @objc deinit
+}
+public struct RPPGSocketMessageBloodPressure : Swift.Decodable {
+  public let systolic: Swift.Int
+  public let diastolic: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RPPGCommon.RPPGSocketMessageBloodPressure : Swift.Equatable {
+  public static func == (lhs: RPPGCommon.RPPGSocketMessageBloodPressure, rhs: RPPGCommon.RPPGSocketMessageBloodPressure) -> Swift.Bool
+}
+extension RPPGCommon.RPPGDetectedFaceContour.ContourType : Swift.Equatable {}
+extension RPPGCommon.RPPGDetectedFaceContour.ContourType : Swift.Hashable {}
+extension RPPGCommon.RPPGDetectedFaceContour.ContourType : Swift.RawRepresentable {}
+extension RPPGCommon.RPPGFacadeState : Swift.Equatable {}
+extension RPPGCommon.RPPGFacadeState : Swift.Hashable {}
+extension RPPGCommon.RPPGFacadeState : Swift.RawRepresentable {}
+extension RPPGCommon.RPPGAnalysisInterruptionReason : Swift.Equatable {}
+extension RPPGCommon.RPPGAnalysisInterruptionReason : Swift.Hashable {}
+extension RPPGCommon.RPPGAnalysisInterruptionReason : Swift.RawRepresentable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.StressStatus : Swift.Equatable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.StressStatus : Swift.Hashable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.StressStatus : Swift.RawRepresentable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.BloodPressureStatus : Swift.Equatable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.BloodPressureStatus : Swift.Hashable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.BloodPressureStatus : Swift.RawRepresentable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.AfibRiskStatus : Swift.Equatable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.AfibRiskStatus : Swift.Hashable {}
+extension RPPGCommon.RPPGSocketMessageMeanData.AfibRiskStatus : Swift.RawRepresentable {}
+extension RPPGCommon.RPPGSocketMessageDataStatus.StatusCode : Swift.Equatable {}
+extension RPPGCommon.RPPGSocketMessageDataStatus.StatusCode : Swift.Hashable {}
+extension RPPGCommon.RPPGSocketMessageDataStatus.StatusCode : Swift.RawRepresentable {}
+extension RPPGCommon.RPPGVideoSessionSettings.CameraPosition : Swift.Equatable {}
+extension RPPGCommon.RPPGVideoSessionSettings.CameraPosition : Swift.Hashable {}
+extension RPPGCommon.RPPGVideoSessionSettings.CameraPosition : Swift.RawRepresentable {}
