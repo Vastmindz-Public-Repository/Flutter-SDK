@@ -21,7 +21,7 @@ First, in your flutter project’s pubspec.yaml file add the dependency as given
 ```
 rppg_common:
   git:
-    url: git@github.com:HarvinderSinghPawar/rppg_flutter_sdk.git
+    url: git@github.com:vastmindz-public-repository/flutter-sdk.git
     ref: main
 ```
 
@@ -155,6 +155,20 @@ allprojects {
             url "${project(':rppg_common').projectDir}/build"
         }
     }
+}
+```
+
+
+4. Add the below snippet to `buildTypes` under `release` of your app in `app level` `build.gradle` file: (Only required for release build.) 
+
+```
+buildTypes {
+   release {
+      ...
+      ...
+      minifyEnabled false
+      shrinkResources false
+   }
 }
 ```
 
