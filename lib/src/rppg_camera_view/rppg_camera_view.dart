@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:rppg_common/src/assets/Constants/rppg_constants.dart';
+
+import '../../constants/rppg_constants.dart';
 
 class RppgCameraView extends StatefulWidget {
   const RppgCameraView({super.key});

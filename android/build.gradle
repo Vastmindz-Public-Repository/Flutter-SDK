@@ -71,7 +71,7 @@ android {
         namespace 'com.example.rppg_common'
     }
 
-    compileSdk 33 //29
+    compileSdk 34 //29
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -89,7 +89,7 @@ android {
 
     defaultConfig {
         minSdkVersion 23
-        targetSdkVersion 33
+        targetSdkVersion 34
         multiDexEnabled true
     }
 

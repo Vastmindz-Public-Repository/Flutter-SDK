@@ -118,10 +118,12 @@ pod install
 
 ### Android
 
-1. Change the minimum Android sdk version to `23` (or higher) in your `android/app/build.gradle` file.
+1. Apply the below sdk version settings in your `android/app/build.gradle` file.
 
 ```
+compileSdk 34
 minSdkVersion 23
+targetSdkVersion 34
 ```
 
 2. Add the following code snippet in your `android/app/build.gradle` file under `android` tag:

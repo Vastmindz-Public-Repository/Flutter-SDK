@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:rppg_common/rppg_common.dart';
-import '../assets/constants/app_constants.dart';
+
+import '../constants/app_constants.dart';
 
 class InvokeMethodController extends GetxController {
   /// Main Object of RppgCommon Class

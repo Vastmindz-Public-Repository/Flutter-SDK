@@ -30,7 +30,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "com.example.rppg_common_example"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion  flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     lintOptions {

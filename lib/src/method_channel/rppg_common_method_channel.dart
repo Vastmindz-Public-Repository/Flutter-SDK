@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import '../../constants/rppg_constants.dart';
 import '../analysis_data/analysis_data.dart';
-import '../assets/Constants/rppg_constants.dart';
 import '../platform_interface/rppg_common_platform_interface.dart';
 
 /// An implementation of [RppgCommonPlatform] that uses method channels.
