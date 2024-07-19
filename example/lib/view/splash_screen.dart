@@ -17,14 +17,18 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Timer(const Duration(seconds: 3),
-            () => Get.offNamed(RouteName.scanScreen));
+        () => Get.offNamed(RouteName.dashboardScreen));
   }
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.white,
-      body: Center(child: Text("Rppg Flutter SDK", textAlign: TextAlign.center,)),
+      body: Center(
+          child: Text(
+        "Rppg Flutter SDK",
+        textAlign: TextAlign.center,
+      )),
     );
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rppg_common/constants/rppg_constants.dart';
 import 'package:rppg_common/rppg_common.dart';
 import 'package:rppg_common_example/controller/invoke_methods_controller.dart';
 import 'package:rppg_common_example/res/assets/image_assets.dart';
+import 'package:rppg_common_example/res/rppg_method/rppg_method.dart';
 import 'package:rppg_common_example/res/rppg_state/rppg_state.dart';
 
 class ScanScreen extends StatefulWidget {
@@ -14,7 +16,7 @@ class ScanScreen extends StatefulWidget {
 
 class _ScanScreenState extends State<ScanScreen>
     with SingleTickerProviderStateMixin {
-  final invokeMethodController = Get.find<InvokeMethodController>();
+  final invokeMethodController = Get.put(InvokeMethodController());
 
   Color blueColor = const Color(0xFF1660b7);
   double? fontSizeVar = 14.00;
@@ -48,7 +50,7 @@ class _ScanScreenState extends State<ScanScreen>
     return Scaffold(
       extendBodyBehindAppBar: false,
       body: Obx(
-            () => Stack(
+        () => Stack(
           children: [
             /// Black Empty Container
             Container(
@@ -59,8 +61,7 @@ class _ScanScreenState extends State<ScanScreen>
             Positioned(
                 height: Get.height,
                 width: Get.width,
-                child: const RppgCameraView()
-            ),
+                child: const RppgCameraView()),
 
             /// Full Bottom View
             Positioned(
@@ -70,32 +71,34 @@ class _ScanScreenState extends State<ScanScreen>
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     /// Moving Warning
-                    if (invokeMethodController.isMoveWarning.value == true) Container(
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      height: 33,
-                      color: Colors.redAccent,
-                      child: Text(
-                        "Please keep your face in front of camera",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: fontColorVar,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.00),
+                    if (invokeMethodController.isMoveWarning.value == true)
+                      Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width,
+                        height: 33,
+                        color: Colors.redAccent,
+                        child: Text(
+                          "Please keep your face in front of camera",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: fontColorVar,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.00),
+                        ),
                       ),
-                    ),
 
                     /// SDK status message banner
-                    if ((invokeMethodController.isMoveWarning.value == false) && (invokeMethodController.statusMessage.value
-                        .toString()
-                        .isNotEmpty))
+                    if ((invokeMethodController.isMoveWarning.value == false) &&
+                        (invokeMethodController.statusMessage.value
+                            .toString()
+                            .isNotEmpty))
                       Container(
                         alignment: Alignment.center,
                         width: MediaQuery.of(context).size.width,
                         height: 33,
                         color: (invokeMethodController.statusMessage.value
-                            .toString() ==
-                            "Analysis Done!!!")
+                                    .toString() ==
+                                "Analysis Done!!!")
                             ? Colors.green
                             : blueColor,
                         child: Text(
@@ -174,7 +177,7 @@ class _ScanScreenState extends State<ScanScreen>
                           TextButton(
                             style: ButtonStyle(
                               backgroundColor:
-                              MaterialStateProperty.all(blueColor),
+                                  MaterialStateProperty.all(blueColor),
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -184,7 +187,7 @@ class _ScanScreenState extends State<ScanScreen>
                             ),
                             child: Text(
                               (invokeMethodController.rppgCommonState.value ==
-                                  RppgState.analysisRunning)
+                                      RppgState.analysisRunning)
                                   ? "Stop Scanning"
                                   : invokeMethodController.buttonTitle.value,
                               style: const TextStyle(
@@ -193,21 +196,19 @@ class _ScanScreenState extends State<ScanScreen>
                             ),
                             onPressed: () {
                               if (invokeMethodController
-                                  .rppgCommonState.value ==
+                                      .rppgCommonState.value ==
                                   RppgState.analysisRunning) {
-
                                 try {
                                   if (invokeMethodController.timer != null) {
                                     invokeMethodController.timer!.cancel();
                                   }
                                   invokeMethodController.checkLastValues();
-
                                 } catch (e) {
                                   invokeMethodController.checkLastValues();
                                 }
 
-                                invokeMethodController.statusMessage.value = 'Scanning stopped';
-
+                                invokeMethodController.statusMessage.value =
+                                    'Scanning stopped';
                               } else {
                                 invokeMethodController.startSession();
                                 invokeMethodController.startCircularAnimation();
@@ -227,9 +228,9 @@ class _ScanScreenState extends State<ScanScreen>
     );
   }
 
-
   /// Circular data widget item
-  Widget buildItem(String dataTextValue, String firstImage, String secondImage, String label,
+  Widget buildItem(
+      String dataTextValue, String firstImage, String secondImage, String label,
       {String? secondDataTextValue = ""}) {
     bool isEmptyValue = invokeMethodController.checkEmptyValue(dataTextValue);
 
@@ -237,29 +238,29 @@ class _ScanScreenState extends State<ScanScreen>
       children: [
         isEmptyValue
             ? const Text(
-          '',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontFamily: 'outfit_regular',
-            color: Colors.white,
-            fontSize: 13.0,
-          ),
-        )
+                '',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'outfit_regular',
+                  color: Colors.white,
+                  fontSize: 13.0,
+                ),
+              )
             : SizedBox(
-          width: 60,
-          child: Text(
-            '$dataTextValue ${(secondDataTextValue != "") ? ', $secondDataTextValue' : ""}',
-            textAlign: TextAlign.center,
-            textScaler: TextScaler.linear(dataTextValue.length > 6 ? 0.8 : 1),
-            softWrap: true,
-            style: const TextStyle(
-                fontFamily: 'outfit_regular',
-                color: Colors.white,
-                fontSize: 13.0,
-                overflow: TextOverflow.ellipsis
-            ),
-          ),
-        ),
+                width: 60,
+                child: Text(
+                  '$dataTextValue ${(secondDataTextValue != "") ? ', $secondDataTextValue' : ""}',
+                  textAlign: TextAlign.center,
+                  textScaler:
+                      TextScaler.linear(dataTextValue.length > 6 ? 0.8 : 1),
+                  softWrap: true,
+                  style: const TextStyle(
+                      fontFamily: 'outfit_regular',
+                      color: Colors.white,
+                      fontSize: 13.0,
+                      overflow: TextOverflow.ellipsis),
+                ),
+              ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 5.3, vertical: 4.0),
           child: Stack(
@@ -267,9 +268,7 @@ class _ScanScreenState extends State<ScanScreen>
               Container(
                 margin: const EdgeInsets.all(2.0),
                 child: Image.asset(
-                  isEmptyValue
-                      ? firstImage
-                      : secondImage,
+                  isEmptyValue ? firstImage : secondImage,
                   width: 42.0,
                   height: 42.0,
                 ),
@@ -326,8 +325,12 @@ class _ScanScreenState extends State<ScanScreen>
 
   @override
   void dispose() {
+    //stop camera video
+    invokeMethodController.invokeMethod(RppgMethod.stopVideo);
+
+    invokeMethodController.resetToInitial();
     // Animation controller
-    invokeMethodController.animationController.dispose();
+    //invokeMethodController.animationController.dispose();
     // GetX Controller
     Get.delete<InvokeMethodController>();
     // TODO: implement dispose

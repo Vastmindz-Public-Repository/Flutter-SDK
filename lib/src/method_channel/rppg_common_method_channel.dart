@@ -16,7 +16,8 @@ class MethodChannelRppgCommon extends RppgCommonPlatform {
       EventChannel(RppgConstants.eventChannelName);
 
   /// Stream Controller to handle upcoming stream response
-  final streamController = StreamController<AnalysisData>();
+  //final streamController = StreamController<AnalysisData>();
+  final streamController = StreamController<AnalysisData>.broadcast();
 
   @override
   Future<String> getState() async {
@@ -84,6 +85,12 @@ class MethodChannelRppgCommon extends RppgCommonPlatform {
   @override
   stopAnalysis() async {
     await methodChannel.invokeMethod<String>(RppgConstants.stopAnalysis);
+    return null;
+  }
+
+  @override
+  stopVideo() async {
+    await methodChannel.invokeMethod<String>(RppgConstants.stopVideo);
     return null;
   }
 

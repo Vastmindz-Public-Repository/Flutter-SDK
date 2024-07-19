@@ -5,6 +5,7 @@ enum RppgMethod {
   startVideo,
   startAnalysis,
   stopAnalysis,
+  stopVideo,
   meshColor,
   cleanMesh,
 }

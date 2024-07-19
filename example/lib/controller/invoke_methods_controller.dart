@@ -30,6 +30,7 @@ class InvokeMethodController extends GetxController implements UpdateUI {
   /// UI Interface
   /// Button
   var buttonTitle = "Start Process".obs;
+
   /// Data Visibility Flag
   var scanResultVisibility = false.obs;
 
@@ -62,7 +63,6 @@ class InvokeMethodController extends GetxController implements UpdateUI {
     // Your disposal logic here
     super.dispose();
   }
-
 
   /// Reset All Values to Initial
   void resetValues() {
@@ -190,7 +190,7 @@ class InvokeMethodController extends GetxController implements UpdateUI {
   }
 
   /// Initial set of commands
-  void startWholeSession() async{
+  void startWholeSession() async {
     await invokeMethod(RppgMethod.getState);
     await invokeMethod(RppgMethod.askPermissions);
     await invokeMethod(RppgMethod.getState);
@@ -257,7 +257,8 @@ class InvokeMethodController extends GetxController implements UpdateUI {
       case RppgMethod.getState:
         {
           // rppgCommonState.value = await rppgCommon.getState();
-          rppgCommonState.value = stringToRppgState(await rppgCommon.getState());
+          rppgCommonState.value =
+              stringToRppgState(await rppgCommon.getState());
           // print(";:::::::: rppgCommonState.value  ::::::::; ${rppgCommonState.value}");
         }
         break;
@@ -270,13 +271,13 @@ class InvokeMethodController extends GetxController implements UpdateUI {
 
       case RppgMethod.configure:
         {
-         await rppgCommon.configure(30, true);
+          await rppgCommon.configure(30, true);
         }
         break;
 
       case RppgMethod.startVideo:
         {
-         await rppgCommon.startVideo();
+          await rppgCommon.startVideo();
         }
         break;
 
@@ -295,26 +296,21 @@ class InvokeMethodController extends GetxController implements UpdateUI {
                     AppConstants.height,
                     AppConstants.weight)
                 .listen((eventData) {
-              sdnns.value = parseStringToDouble(eventData.sdnns.toString()) ;
+              sdnns.value = parseStringToDouble(eventData.sdnns.toString());
               statusMessage.value = eventData.statusMessage;
               progressPercentage.value = eventData.progressPercentage;
 
               avgBpm.value = '${eventData.avgBpm}';
-              avgO2SaturationLevel.value =
-              '${eventData.avgO2SaturationLevel}';
-              avgRespirationRate.value =
-              '${eventData.avgRespirationRate}';
+              avgO2SaturationLevel.value = '${eventData.avgO2SaturationLevel}';
+              avgRespirationRate.value = '${eventData.avgRespirationRate}';
 
-              bloodPressureSys.value =
-              "${eventData.bloodPressure.systolic}";
-              bloodPressureDia.value =
-              "${eventData.bloodPressure.diastolic}";
+              bloodPressureSys.value = "${eventData.bloodPressure.systolic}";
+              bloodPressureDia.value = "${eventData.bloodPressure.diastolic}";
 
               bloodPressureStatus.value = eventData.bloodPressureStatus;
               stressStatus.value = eventData.stressStatus;
 
-              isMoveWarning.value =
-                  eventData.isMovingWarning;
+              isMoveWarning.value = eventData.isMovingWarning;
 
               if (checkIfGotAllValues()) {
                 checkLastValues();
@@ -328,28 +324,47 @@ class InvokeMethodController extends GetxController implements UpdateUI {
 
       case RppgMethod.stopAnalysis:
         {
-         await rppgCommon.stopAnalysis();
+          await rppgCommon.stopAnalysis();
         }
         break;
 
+      case RppgMethod.stopVideo:
+        {
+          try {
+            await rppgCommon.stopVideo();
+          } on PlatformException {
+            statusMessage.value = 'Failed stopVideo.';
+          }
+
+          break;
+        }
+
       case RppgMethod.meshColor:
         {
-         await rppgCommon.meshColor();
+          await rppgCommon.meshColor();
         }
         break;
 
       case RppgMethod.cleanMesh:
         {
-         await rppgCommon.cleanMesh();
+          await rppgCommon.cleanMesh();
         }
         break;
 
       default:
-        {
-
-        }
+        {}
         break;
     }
+  }
+
+  void resetToInitial() {
+    timerValue.value = 60;
+    statusMessage.value = 'Analysis Done!!!';
+    isAnalysisDone.value = true;
+    stopCircularAnimation();
+    invokeMethod(RppgMethod.stopAnalysis);
+    invokeMethod(RppgMethod.cleanMesh);
+    updateButtonTitle();
   }
 
   /// Convert (String to Double)
@@ -365,8 +380,12 @@ class InvokeMethodController extends GetxController implements UpdateUI {
   bool checkEmptyValue(String dataTextValue) {
     bool isEmptyValue = true;
 
-    if ((dataTextValue == "") || (dataTextValue == '0.0') || (dataTextValue == '0.00') ||
-        (dataTextValue == '0') || (dataTextValue.toLowerCase() == "no_data") || (dataTextValue.toLowerCase() == "nodata")) {
+    if ((dataTextValue == "") ||
+        (dataTextValue == '0.0') ||
+        (dataTextValue == '0.00') ||
+        (dataTextValue == '0') ||
+        (dataTextValue.toLowerCase() == "no_data") ||
+        (dataTextValue.toLowerCase() == "nodata")) {
       isEmptyValue = true;
     } else {
       isEmptyValue = false;
@@ -417,6 +436,7 @@ class InvokeMethodController extends GetxController implements UpdateUI {
   void startCircularAnimation() {
     animationController.repeat();
   }
+
   /// Stop animation
   void stopCircularAnimation() {
     animationController.stop();

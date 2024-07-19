@@ -48,6 +48,10 @@ abstract class RppgCommonPlatform extends PlatformInterface {
   stopAnalysis() =>
       throw UnimplementedError('stopAnalysis() has not been implemented.');
 
+  /// Exception stopVideo()
+  stopVideo() =>
+      throw UnimplementedError('stopVideo() has not been implemented.');
+
   /// Exception meshColor()
   meshColor() =>
       throw UnimplementedError('meshColor() has not been implemented.');
