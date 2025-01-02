@@ -56,10 +56,6 @@ class RppgCommon {
   /// Will change `state` to `videoStarted` in case of success.
   stopAnalysis() => RppgCommonPlatform.instance.stopAnalysis();
 
-  /// Stops camera
-  /// Should be invoked only when disposing of the screen widget.
-  stopVideo() => RppgCommonPlatform.instance.stopVideo();
-
   /// To Add the mesh over the face
   meshColor() => RppgCommonPlatform.instance.meshColor();
 

@@ -57,8 +57,20 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
-
+    - lib/assets/blood_pressure_green.png
+    - lib/assets/bp_reading.png
+    - lib/assets/heart_rate_green.png
+    - lib/assets/heart_rate_reading.png
+    - lib/assets/hrv_green.png
+    - lib/assets/hrv_reading.png
+    - lib/assets/respiration_rate_green.png
+    - lib/assets/respiretion_rate_reading.png
+    - lib/assets/spo2_green.png
+    - lib/assets/spo2_reading.png
+    - lib/assets/stress_index_green.png
+    - lib/assets/stress_index_reading.png
+    - lib/assets/blue_tick.png
+    - lib/assets/circle_anim.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

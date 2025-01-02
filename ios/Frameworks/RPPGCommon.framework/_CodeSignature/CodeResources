@@ -18,7 +18,7 @@
 		</data>
 		<key>GoogleMVFaceDetectorResources.bundle/Info.plist</key>
 		<data>
-		XPg6iA4IsNVv5IGwDIeNnemUeYk=
+		YsMNInbvmRGG+aTHkceYb/o+h3E=
 		</data>
 		<key>GoogleMVFaceDetectorResources.bundle/LMprec_600.emd</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/RPPGCommon-Swift.h</key>
 		<data>
-		VcHKHgc4NVQIgoJI9c3QY4mM5tY=
+		Fmz+QXlR1djRw+kgbtl2P5tL0VM=
 		</data>
 		<key>Headers/RPPGCommon.h</key>
 		<data>
@@ -66,31 +66,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		z+tIjJBNNwoe+U7IHP/gunMZhyo=
+		jxPzw9TBuMQAy6y21cgcuhaI6b0=
 		</data>
 		<key>Modules/RPPGCommon.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		kfyOfA3kj0g2aWLsKNNkLxSGd8o=
+		WMDJF38wMM4Tx3WEVpynjEZa2o8=
 		</data>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		wZlYpUr69fWoVvirYeSfz0gNj/0=
+		RfEchbbmGX3KMBDuyiihkTeEEeI=
 		</data>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		4r5web52NBVrfLv8PI1E3+seA58=
+		/kPPWIq3z60XZrtMoM2Vo0EIA8c=
 		</data>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		2mzjsfcmh+QnnTqpYTyBVc28oyU=
+		cbfwmApk4U+PDdQYUvV5zpXXI10=
 		</data>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		4r5web52NBVrfLv8PI1E3+seA58=
+		/kPPWIq3z60XZrtMoM2Vo0EIA8c=
 		</data>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		7D0cCMecFvhiWtLSPHpkq7ArNGw=
+		0bj4pR6b+Vnb14MSvlSWDvFUlYA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -124,7 +124,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IxD/eR4D2kxunyLMVPLrSB5FdcYOl6awet2QQvS5tLk=
+			MrkTq5IIghbJS3uqw9E44pq6T5nnx4ugIUNGcamydUU=
 			</data>
 		</dict>
 		<key>GoogleMVFaceDetectorResources.bundle/LMprec_600.emd</key>
@@ -194,7 +194,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4wQ3kHf0VNRhyroS+OcEkXLst+nxwe+C7cYFEqs3Njg=
+			ZJi9ATmjsbFhDCn3bTLXqoZfYR2Ua+SLDxUSxEq96HA=
 			</data>
 		</dict>
 		<key>Headers/RPPGCommon.h</key>
@@ -208,42 +208,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zOyslLQn+oWxM7Knt/SvBKmOBWeKCr4dTCFC3JWO8dQ=
+			ELkXxuzOKQGSLkKMREaXzXgM7ehvIXCU/yV47KZtwG4=
 			</data>
 		</dict>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fq9K+X/nNZuSMuCaAgy8DT9gWYQgwfw4VpaqErdZ+P0=
+			Fd9T160fwISoYZt6O4JVodQUhy96QE3RLOYsuilRSmQ=
 			</data>
 		</dict>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wr/Z2q1bov7XlADaRLhABYqwV4KCy9lrCgnka/VZ0W8=
+			CwZ0wWk2aRNFtdew3qAzF4H2NIfniyVcJ9zfBrYtcFQ=
 			</data>
 		</dict>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vErEo6vfGc8H3WhhFxzcevvKKmDmg+dAWEM6uTy6RY4=
+			H5TvdMxR35B1qLDTNDFAdI1NMhdkx6NqAzGdBIPyrpo=
 			</data>
 		</dict>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wr/Z2q1bov7XlADaRLhABYqwV4KCy9lrCgnka/VZ0W8=
+			CwZ0wWk2aRNFtdew3qAzF4H2NIfniyVcJ9zfBrYtcFQ=
 			</data>
 		</dict>
 		<key>Modules/RPPGCommon.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yII7HDtq96WtFZdWPxnzz1L+Fixjlb3Td1Evg9l8a7w=
+			kxx28oSFLrot87s/sMysGSyacj7SMLRl4UTAIjrrloA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

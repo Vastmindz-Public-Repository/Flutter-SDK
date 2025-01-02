@@ -32,7 +32,7 @@ A new Flutter project.
 
   # Library dependencies
   s.dependency 'GoogleMLKit/FaceDetection'
-  s.dependency 'Starscream', '4.0.5'
+  s.dependency 'Starscream', '4.0.4'
   s.dependency 'Protobuf'
 
   # Native frameworks

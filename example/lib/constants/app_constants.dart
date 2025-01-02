@@ -1,5 +1,6 @@
 class AppConstants {
-  /// Socket and User data
+
+  /// Socket Creds. and User Info.
   ///
   static const String baseUrl = "";
   static const String authToken = "";
@@ -10,4 +11,5 @@ class AppConstants {
   static const String weight = "";
 
   // Add more constants as needed...
+
 }

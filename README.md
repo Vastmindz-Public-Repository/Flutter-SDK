@@ -21,8 +21,8 @@ First, in your flutter project’s pubspec.yaml file add the dependency as given
 ```
 rppg_common:
   git:
-    url: https://github.com/Vastmindz-Public-Repository/Flutter-SDK.git
-    ref: xcode-15-3
+    url: git@github.com:vastmindz-public-repository/flutter-sdk.git
+    ref: main
 ```
 
 , and run `flutter pub get`

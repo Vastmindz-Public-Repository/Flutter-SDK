@@ -87,6 +87,8 @@ struct AnalysisData {
     
     // Send Socket Response to Flutter
     func sendDataToFlutter() {
+        
+
         RppgCommonPlugin.rppgPluginShared.sendEvent(data: self.convertToJSON())
     }
     
@@ -98,12 +100,15 @@ struct AnalysisData {
             
             // Convert the JSON data to a String (optional)
             if let jsonString = String(data: jsonData, encoding: .utf8) {
+              
                 return jsonString
             } else {
+                
                 return ""
             }
             
         } catch {
+           
             return ""
         }
     }

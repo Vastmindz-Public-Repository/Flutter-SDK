@@ -37,9 +37,7 @@ public class Analysis: NSObject {
     
     override init() {
         /// Dimensions setup of camera view
-        let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height
-        self.cameraViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        self.cameraViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
         
         super.init()
         /// Initialize and configure UIView
@@ -113,19 +111,24 @@ public class Analysis: NSObject {
     
     /// Fixme: - After when this functionality will available on other platforms
     /// Not using it, because it's not available on other platforms
-     public func stopVideo() {
-         self.rppgFacade.stopVideo()
-     }
+    // public func stopVideo() {
+    //     self.rppgFacade.stopVideo()
+    // }
+    
     
     /// Start analysis
     public func startAnalysis(baseUrl: String, authToken: String, fps: String?, age: String?, sex: String?, height: String?, weight: String?) {
         /// Reset Previous Data (if any)
+        
         lastAnalysis.resetData()
         /// Construct socket url
         createURL.createWebSocketURL(baseUrl: baseUrl, authToken: authToken, fps: fps, age: age, sex: sex, height: height, weight: weight)
+       // createURL.createWebSocketURL(baseUrl: "wss://vm-production.xyz/vp/bgr_signal_socket?", authToken: "daa30ba0-07be-4a4c-bbb3-f2391862f07d", fps: "30", age: "24", sex: "male", height: "174", weight: "68")
+        
         /// Check for safe url
         if let safeWebUrl = createURL.webSocketUrl {
             let url = URL(string: safeWebUrl)!
+           
             self.rppgFacade.startAnalysis(socketURL: url)
         }
         
@@ -151,6 +154,28 @@ public class Analysis: NSObject {
 
 // MARK: - RPPGCommonFacadeDelegate
 extension Analysis: RPPGCommonFacadeDelegate {
+
+    public func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveEventFromSocket event: RPPGCommon.RPPGSocketEvent,sampleBuffer:CMSampleBuffer){
+
+
+        switch event {
+            
+        case .connected:
+            print("---------------socket connected----------------")
+        case .disconnected:
+            print("---------------socket disconnected----------------")
+        case .cancelled:
+            print("---------------socket cancelled----------------")
+        case .message(let message):
+            print("---------------socket message---------------- ")
+            DispatchQueue.main.async{
+                self.lastAnalysis.handleSocketData(message)
+            }
+            
+        @unknown default:
+            fatalError("Unknown socket event received: \(event)")
+        }
+    }
     
     public func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveEventFromSocket event: RPPGCommon.RPPGSocketEvent) {
         
@@ -185,9 +210,13 @@ extension Analysis: RPPGCommonFacadeDelegate {
 
 // MARK: - RPPGCommonFacadeDiagnosticsDelegate
 extension Analysis: RPPGCommonFacadeDiagnosticsDelegate {
-    public func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveImageQualityData data: RPPGCommon.RPPGImageQualityData, sampleBuffer: CMSampleBuffer) {
+    
+    public func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveImageQualityData data: RPPGCommon.RPPGImageQualityData,
+sampleBuffer:CMSampleBuffer) {
         
     }
+    // public func didReceiveImageQualityData()
+    
 }
 
 //MARK: - RPPGCommonFacadeRawDelegate
@@ -197,18 +226,19 @@ extension Analysis: RPPGCommonFacadeRawDelegate {
     }
     
     public func facadeDidReceiveSocketDisconnected(_ facade: RPPGCommon.RPPGCommonFacade) {
-        
+       
     }
     
     public func facadeDidReceiveSocketCancelled(_ facade: RPPGCommon.RPPGCommonFacade) {
-        
+       
     }
     
     public func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveMessageFromSocket message: String) {
-        
+       
     }
     
     public func facade(_ facade: RPPGCommon.RPPGCommonFacade, interruptionWithReason reason: String) {
+       
         DispatchQueue.main.async{
             self.lastAnalysis.isMovingWarning = true
             self.lastAnalysis.sendDataToFlutter()
@@ -221,7 +251,7 @@ extension Analysis: RPPGCommonFacadeRawDelegate {
     
     /// Handle Gap if face will out of focus
     private func handleGaps(isSuccessCase: Bool) {
-        
+       
         if (!isSuccessCase) {
             gapsCount = 0
             
@@ -231,6 +261,7 @@ extension Analysis: RPPGCommonFacadeRawDelegate {
         }
         
         if (gapsCount > GAPS_THRESHOLD) {
+            
             gapsCount = 0
             DispatchQueue.main.async{
                 self.stopAnalysis()

@@ -9,12 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:rppg_common_example/main.dart';
-import 'package:rppg_common_example/view/splash_screen.dart';
 
 void main() {
   testWidgets('Verify Platform version', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const SplashScreen());
+    await tester.pumpWidget(const RPPGExampleApp());
 
     // Verify that platform version is retrieved.
     expect(

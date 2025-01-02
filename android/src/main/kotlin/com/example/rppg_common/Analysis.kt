@@ -88,28 +88,24 @@ class Analysis {
     private lateinit var messagesFlow: Flow<SocketMessage>
     private lateinit var bpmEventMessage: LiveData<Pair<String, String>>
     private var pointer = 0L
-    var isInit = 0
+
 
     /// Initialize Analysis class
     fun initialization(activity: Activity, lifecycle: Any) {
-        if(isInit==0)
-        {
-            this.activity = activity
-            this.lifecycle = lifecycle
-            analysisData = AnalysisData()
-            permissionManager = PermissionManager()
-            rppgCameraView = RppgCameraView(activity, null)
+        this.activity = activity
+        this.lifecycle = lifecycle
+        analysisData = AnalysisData()
+        permissionManager = PermissionManager()
+        rppgCameraView = RppgCameraView(activity, null)
 
-            /// Initialize the Socket
-            initializeSocket()
+        /// Initialize the Socket
+        initializeSocket()
 
-            /// Setup Observers
-            setupObservers()
+        /// Setup Observers
+        setupObservers()
 
-            /// Set initial state of SDKManager
-            sdkManagerInstance.setSDKState(SDKManager.SDKState.INITIAL)
-            isInit = isInit + 1
-        }
+        /// Set initial state of SDKManager
+        sdkManagerInstance.setSDKState(SDKManager.SDKState.INITIAL)
     }
 
     /// Initialize the Socket
@@ -294,16 +290,6 @@ class Analysis {
         cameraManager.stopRecording()
         socketManager.stopSocket()
         sdkManagerInstance.setSDKState(SDKManager.SDKState.VIDEO_STARTED)
-    }
-
-    /// Stop camera video
-    public fun stopVideo() {
-        cameraManager.stopRecording()
-        socketManager.stopSocket()
-        onDestroy()
-        isInit = 0
-        sdkManagerInstance.setSDKState(SDKManager.SDKState.INITIAL)
-
     }
 
     /// Clean mesh

@@ -8,6 +8,7 @@
 import Foundation
 
 struct CreateURL {
+   
     var webSocketUrl: String?
     
     mutating func createWebSocketURL(baseUrl: String, authToken: String, fps: String?, age: String?, sex: String?, height: String?, weight: String?) {
@@ -41,6 +42,7 @@ struct CreateURL {
         
         /// Create and return the final URL
         webSocketUrl = components?.url?.absoluteString
+         print("\(webSocketUrl)")
     }
     
     

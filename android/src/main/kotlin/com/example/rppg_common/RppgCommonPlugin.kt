@@ -72,14 +72,7 @@ class RppgCommonPlugin: FlutterPlugin, MethodCallHandler, ActivityAware,
 
     when (call.method) {
       "getState"->
-      {
-        if (this::activity.isInitialized)
-        {
-          //analysisInstance = Analysis.getInstance()
-          analysisInstance.initialization(activity, lifecycle)
-        }
         result.success(analysisInstance.getState())
-      }
       "askPermissions"->
         analysisInstance.setupPermission(activity,object :PermissionResult{
           override fun onPermissionCheck(isGranted: Boolean) {
@@ -119,9 +112,6 @@ class RppgCommonPlugin: FlutterPlugin, MethodCallHandler, ActivityAware,
       }
       "stopAnalysis"-> {
         analysisInstance.stopAnalysis()
-      }
-      "stopVideo"-> {
-        analysisInstance.stopVideo()
       }
       "cleanMesh"-> {
         analysisInstance.cleanMesh()
