@@ -37,8 +37,8 @@ public class Analysis: NSObject {
     
     override init() {
         /// Dimensions setup of camera view
-        self.cameraViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
-        
+        self.cameraViewContainer = UIView()//frame: CGRect(x: 0, y: 0, width: self.view.bound.width, height: self.view.bound.height))
+        self.cameraViewContainer.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         super.init()
         /// Initialize and configure UIView
         self.setupFacade()
