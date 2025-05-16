@@ -294,6 +294,7 @@ class Analysis {
         cameraManager.stopRecording()
         socketManager.stopSocket()
         sdkManagerInstance.setSDKState(SDKManager.SDKState.VIDEO_STARTED)
+        stopVideo()
     }
 
     /// Stop camera video
