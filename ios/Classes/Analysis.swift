@@ -123,8 +123,7 @@ public class Analysis: NSObject {
         
         lastAnalysis.resetData()
         /// Construct socket url
-//        createURL.createWebSocketURL(baseUrl: baseUrl, authToken: authToken, fps: fps, age: age, sex: sex, height: height, weight: weight)
-        createURL.createWebSocketURL(baseUrl: "wss://vm-production.xyz/vp/bgr_signal_socket?", authToken: "58821f09-40d6-4cb9-b4ed-88d2ede9e358", fps: "30", age: "24", sex: "male", height: "174", weight: "68")
+        createURL.createWebSocketURL(baseUrl: baseUrl, authToken: authToken, fps: fps, age: age, sex: sex, height: height, weight: weight)
         
         /// Check for safe url
         if let safeWebUrl = createURL.webSocketUrl {
