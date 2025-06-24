@@ -66,6 +66,7 @@ class InvokeMethodController extends GetxController {
 
   /// Initial set of commands
   startWholeSession() async {
+    stopAllProcesses();
     await invokeMethod("getState");
     invokeMethod("askPermissions");
     updateButtonTitle();
@@ -124,7 +125,55 @@ class InvokeMethodController extends GetxController {
         break;
     }
   }
+  //Stop All the processses when moved out of the screen
+Future<void> stopAllProcesses() async {
 
+
+      stopCircularAnimation();
+    invokeMethod("stopAnalysis");
+    invokeMethod("cleanMesh");
+
+    // try {
+    //   print("rpg value " + rppgCommonState.value.toString());
+    //   // Stop analysis if running
+    //   if (rppgCommonState.value == "analysisRunning") {
+    //     print("inside First one if started ");
+ 
+    //     invokeMethod("stopAnalysis");
+    //     invokeMethod("cleanMesh");
+ 
+    //     print("inside First one if Completed ");
+    //   }
+ 
+    //   // Stop video if started
+    //   if (rppgCommonState.value == "videoStarted" ||
+    //       rppgCommonState.value == "analysisRunning") {
+    //     print("inside Stop video if started ");
+    //     // If you have a stopVideo method in RppgCommon:
+    //     invokeMethod("stopAnalysis");
+    //     invokeMethod("cleanMesh");
+ 
+    //     print("Completed Stop video if started ");
+    //   }
+ 
+      // Cancel any active timer
+      // if (timer != null && timer!.isActive) {
+      //   timer!.cancel();
+      // }
+ 
+      // Stop animations
+     // animationController.stop();
+ 
+      // Reset state
+      // rppgCommonState.value = "initial";
+      // statusMessage.value = "Session stopped";
+    // } catch (e) {
+    //   print('Error stopping processes: $e');
+    //   debugPrint('Error stopping processes: $e');
+    // }
+  }
+
+ 
   /// Update the UI button Text
   void updateButtonTitle() async {
     rppgCommonState.value = await rppgCommon.getState();

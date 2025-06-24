@@ -3628,6 +3628,39 @@
           {
             "kind": "Function",
             "name": "facade",
+            "printedName": "facade(_:didReceiveEventFromSocket:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RPPGCommonFacade",
+                "printedName": "RPPGCommon.RPPGCommonFacade",
+                "usr": "c:@M@RPPGCommon@objc(cs)RPPGCommonFacade"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RPPGSocketEvent",
+                "printedName": "RPPGCommon.RPPGSocketEvent",
+                "usr": "s:10RPPGCommon15RPPGSocketEventO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10RPPGCommon0A14FacadeDelegateP6facade_25didReceiveEventFromSocketyAA0aB0C_AA010RPPGSocketG0OtF",
+            "mangledName": "$s10RPPGCommon0A14FacadeDelegateP6facade_25didReceiveEventFromSocketyAA0aB0C_AA010RPPGSocketG0OtF",
+            "moduleName": "RPPGCommon",
+            "genericSig": "<τ_0_0 where τ_0_0 : RPPGCommon.RPPGCommonFacadeDelegate>",
+            "sugared_genericSig": "<Self where Self : RPPGCommon.RPPGCommonFacadeDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "facade",
             "printedName": "facade(_:didReceiveEventFromSocket:sampleBuffer:)",
             "children": [
               {
@@ -10443,6 +10476,13 @@
         "moduleName": "RPPGCommon"
       },
       {
+        "kind": "Import",
+        "name": "WebKit",
+        "printedName": "WebKit",
+        "declKind": "Import",
+        "moduleName": "RPPGCommon"
+      },
+      {
         "kind": "TypeDecl",
         "name": "RPPGSocketManagerDelegate",
         "printedName": "RPPGSocketManagerDelegate",
@@ -12407,6 +12447,33 @@
             ]
           },
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "RPPGVideoSessionService",
+                "printedName": "RPPGCommon.RPPGVideoSessionService",
+                "usr": "c:@M@RPPGCommon@objc(cs)RPPGVideoSessionService"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@RPPGCommon@objc(cs)RPPGVideoSessionService(im)init",
+            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceCACycfc",
+            "moduleName": "RPPGCommon",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "prepare",
             "printedName": "prepare(settings:)",
@@ -12540,30 +12607,43 @@
             "funcSelfKind": "NonMutating"
           },
           {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init()",
+            "kind": "Function",
+            "name": "captureOutput",
+            "printedName": "captureOutput(_:didDrop:from:)",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "RPPGVideoSessionService",
-                "printedName": "RPPGCommon.RPPGVideoSessionService",
-                "usr": "c:@M@RPPGCommon@objc(cs)RPPGVideoSessionService"
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AVCaptureOutput",
+                "printedName": "AVFoundation.AVCaptureOutput",
+                "usr": "c:objc(cs)AVCaptureOutput"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CMSampleBuffer",
+                "printedName": "CoreMedia.CMSampleBuffer",
+                "usr": "c:@T@CMSampleBufferRef"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AVCaptureConnection",
+                "printedName": "AVFoundation.AVCaptureConnection",
+                "usr": "c:objc(cs)AVCaptureConnection"
               }
             ],
-            "declKind": "Constructor",
-            "usr": "c:@M@RPPGCommon@objc(cs)RPPGVideoSessionService(im)init",
-            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceCACycfc",
+            "declKind": "Func",
+            "usr": "s:10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_7didDrop4fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0J10ConnectionCtYaF",
+            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_7didDrop4fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0J10ConnectionCtYaF",
             "moduleName": "RPPGCommon",
-            "overriding": true,
-            "implicit": true,
-            "objc_name": "init",
             "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Override"
+              "AccessControl"
             ],
-            "init_kind": "Designated"
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Function",
@@ -12595,13 +12675,10 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@CM@RPPGCommon@objc(cs)RPPGVideoSessionService(im)captureOutput:didOutputSampleBuffer:fromConnection:",
-            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_03didF04fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0I10ConnectionCtF",
+            "usr": "s:10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_03didF04fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0I10ConnectionCtYaF",
+            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_03didF04fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0I10ConnectionCtYaF",
             "moduleName": "RPPGCommon",
-            "objc_name": "captureOutput:didOutputSampleBuffer:fromConnection:",
             "declAttributes": [
-              "Dynamic",
-              "ObjC",
               "AccessControl"
             ],
             "isFromExtension": true,
@@ -14139,665 +14216,665 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2603,
       "length": 18,
       "value": "\"MEASUREMENT_DATA\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2646,
       "length": 23,
       "value": "\"MEASUREMENT_MEAN_DATA\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2696,
       "length": 14,
       "value": "\"STRESS_INDEX\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2733,
       "length": 20,
       "value": "\"MEASUREMENT_STATUS\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2781,
       "length": 22,
       "value": "\"SENDING_RATE_WARNING\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2831,
       "length": 16,
       "value": "\"MOVING_WARNING\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2872,
       "length": 22,
       "value": "\"MEASUREMENT_PROGRESS\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2917,
       "length": 20,
       "value": "\"MEASUREMENT_SIGNAL\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 2965,
       "length": 14,
       "value": "\"ACCESS_TOKEN\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 3009,
       "length": 16,
       "value": "\"BLOOD_PRESSURE\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 3055,
       "length": 16,
       "value": "\"SIGNAL_QUALITY\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 3098,
       "length": 13,
       "value": "\"HRV_METRICS\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 3234,
       "length": 6,
       "value": "\"data\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketEvent.swift",
       "kind": "StringLiteral",
       "offset": 3261,
       "length": 13,
       "value": "\"messageType\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGStaticFaceMesh.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGStaticFaceMesh.swift",
       "kind": "IntegerLiteral",
-      "offset": 766,
+      "offset": 786,
       "length": 3,
       "value": "132"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageSendingRateWarning.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageSendingRateWarning.swift",
       "kind": "StringLiteral",
       "offset": 380,
       "length": 12,
       "value": "\"delayValue\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageSendingRateWarning.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageSendingRateWarning.swift",
       "kind": "StringLiteral",
       "offset": 416,
       "length": 21,
       "value": "\"notificationMessage\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 267,
       "length": 14,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 295,
       "length": 17,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 326,
       "length": 15,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 355,
       "length": 18,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 387,
       "length": 7,
       "value": "5"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 408,
       "length": 8,
       "value": "6"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 430,
       "length": 11,
       "value": "7"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 455,
       "length": 14,
       "value": "8"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 483,
       "length": 11,
       "value": "9"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 508,
       "length": 14,
       "value": "10"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 536,
       "length": 10,
       "value": "11"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 560,
       "length": 10,
       "value": "12"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 584,
       "length": 9,
       "value": "13"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 607,
       "length": 10,
       "value": "14"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGDetectedFaceContour.swift",
       "kind": "IntegerLiteral",
       "offset": 631,
       "length": 7,
       "value": "15"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "IntegerLiteral",
       "offset": 627,
       "length": 8,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "IntegerLiteral",
       "offset": 833,
       "length": 12,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "IntegerLiteral",
       "offset": 1140,
       "length": 15,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "IntegerLiteral",
       "offset": 1205,
       "length": 4,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "IntegerLiteral",
       "offset": 1665,
       "length": 15,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 4280,
+      "offset": 4419,
       "length": 53,
       "value": "\"delegate is set to: \""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 4332,
+      "offset": 4471,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 4464,
+      "offset": 4649,
       "length": 65,
       "value": "\"diagnostics delegate is set to: \""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 4528,
+      "offset": 4713,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 5158,
+      "offset": 5343,
       "length": 28,
       "value": "\"CFBundleShortVersionString\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 5203,
+      "offset": 5388,
       "length": 5,
       "value": "\"---\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 310,
       "length": 9,
       "value": "\"NO_DATA\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 339,
       "length": 5,
       "value": "\"LOW\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 367,
       "length": 8,
       "value": "\"NORMAL\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 400,
       "length": 10,
       "value": "\"ELEVATED\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 435,
       "length": 11,
       "value": "\"VERY_HIGH\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 937,
       "length": 9,
       "value": "\"NO_DATA\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 969,
       "length": 8,
       "value": "\"NORMAL\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1002,
       "length": 10,
       "value": "\"ELEVATED\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1034,
       "length": 8,
       "value": "\"HYP_S1\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1064,
       "length": 8,
       "value": "\"HYP_S2\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1098,
       "length": 12,
       "value": "\"HYP_CRISIS\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1650,
       "length": 9,
       "value": "\"NO_DATA\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1679,
       "length": 5,
       "value": "\"LOW\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1707,
       "length": 8,
       "value": "\"NORMAL\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1740,
       "length": 10,
       "value": "\"ELEVATED\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 1775,
       "length": 11,
       "value": "\"VERY_HIGH\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 2501,
       "length": 5,
       "value": "\"bpm\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 2538,
       "length": 4,
       "value": "\"rr\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 2575,
       "length": 8,
       "value": "\"oxygen\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 2612,
       "length": 14,
       "value": "\"stressStatus\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 2662,
       "length": 21,
       "value": "\"bloodPressureStatus\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageMeanData.swift",
       "kind": "StringLiteral",
       "offset": 2714,
       "length": 16,
       "value": "\"afibRiskStatus\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 307,
       "length": 9,
       "value": "\"SUCCESS\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 339,
       "length": 9,
       "value": "\"NO_FACE\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 373,
       "length": 11,
       "value": "\"FACE_LOST\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 412,
       "length": 13,
       "value": "\"CALIBRATING\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 455,
       "length": 15,
       "value": "\"RECALIBRATING\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 503,
       "length": 20,
       "value": "\"BRIGHT_LIGHT_ISSUE\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 560,
       "length": 24,
       "value": "\"NOISE_DURING_EXECUTION\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 1312,
       "length": 12,
       "value": "\"statusCode\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageDataStatus.swift",
       "kind": "StringLiteral",
       "offset": 1354,
       "length": 15,
       "value": "\"statusMessage\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Logger\/RPPGLog.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Logger\/RPPGLog.swift",
       "kind": "IntegerLiteral",
       "offset": 263,
       "length": 5,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageProgress.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageProgress.swift",
       "kind": "StringLiteral",
       "offset": 348,
       "length": 17,
       "value": "\"progressPercent\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageSignal.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageSignal.swift",
       "kind": "StringLiteral",
       "offset": 340,
       "length": 8,
       "value": "\"signal\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageStressData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageStressData.swift",
       "kind": "StringLiteral",
       "offset": 284,
       "length": 8,
       "value": "\"stress\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGCameraView.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGCameraView.swift",
       "kind": "BooleanLiteral",
       "offset": 400,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageToken.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageToken.swift",
       "kind": "StringLiteral",
       "offset": 337,
       "length": 13,
       "value": "\"accessToken\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 901,
+      "offset": 914,
       "length": 4,
       "value": "4404"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 1147,
+      "offset": 1160,
       "length": 2,
       "value": "50"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 1185,
+      "offset": 1198,
       "length": 4,
       "value": "1000"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 1242,
+      "offset": 1255,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1288,
+      "offset": 1301,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "StringLiteral",
-      "offset": 1833,
+      "offset": 1846,
       "length": 53,
       "value": "\"delegate was set to \""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "StringLiteral",
-      "offset": 1885,
+      "offset": 1898,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "StringLiteral",
-      "offset": 7465,
+      "offset": 7704,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGVideoSessionService.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGVideoSessionService.swift",
       "kind": "StringLiteral",
       "offset": 1609,
       "length": 29,
       "value": "\"com.rppg.sessionConfigQueue\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGVideoSessionService.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGVideoSessionService.swift",
       "kind": "StringLiteral",
       "offset": 1772,
       "length": 29,
       "value": "\"com.rppg.captureOutputQueue\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageData.swift",
       "kind": "StringLiteral",
       "offset": 400,
       "length": 5,
       "value": "\"bpm\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageData.swift",
       "kind": "StringLiteral",
       "offset": 437,
       "length": 4,
       "value": "\"rr\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageData.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/Messages\/RPPGSocketMessageData.swift",
       "kind": "StringLiteral",
       "offset": 474,
       "length": 8,
       "value": "\"oxygen\""
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGVideoSessionSettings.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGVideoSessionSettings.swift",
       "kind": "IntegerLiteral",
       "offset": 318,
       "length": 4,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/wegile\/Downloads\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGVideoSessionSettings.swift",
+      "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/VideoService\/RPPGVideoSessionSettings.swift",
       "kind": "IntegerLiteral",
       "offset": 423,
       "length": 2,

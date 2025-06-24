@@ -38,7 +38,8 @@ public class Analysis: NSObject {
     override init() {
         /// Dimensions setup of camera view
         self.cameraViewContainer = UIView()//frame: CGRect(x: 0, y: 0, width: self.view.bound.width, height: self.view.bound.height))
-        self.cameraViewContainer.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        //self.cameraViewContainer.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        self.cameraViewContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height)
         super.init()
         /// Initialize and configure UIView
         self.setupFacade()
@@ -122,8 +123,8 @@ public class Analysis: NSObject {
         
         lastAnalysis.resetData()
         /// Construct socket url
-        createURL.createWebSocketURL(baseUrl: baseUrl, authToken: authToken, fps: fps, age: age, sex: sex, height: height, weight: weight)
-       // createURL.createWebSocketURL(baseUrl: "wss://vm-production.xyz/vp/bgr_signal_socket?", authToken: "daa30ba0-07be-4a4c-bbb3-f2391862f07d", fps: "30", age: "24", sex: "male", height: "174", weight: "68")
+//        createURL.createWebSocketURL(baseUrl: baseUrl, authToken: authToken, fps: fps, age: age, sex: sex, height: height, weight: weight)
+        createURL.createWebSocketURL(baseUrl: "wss://vm-production.xyz/vp/bgr_signal_socket?", authToken: "58821f09-40d6-4cb9-b4ed-88d2ede9e358", fps: "30", age: "24", sex: "male", height: "174", weight: "68")
         
         /// Check for safe url
         if let safeWebUrl = createURL.webSocketUrl {

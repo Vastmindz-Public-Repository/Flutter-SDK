@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/RPPGCore-Swift.h</key>
 		<data>
-		kSNXRhFeMEH/L5BszPMh/Z9bBU4=
+		F/EIjljTKgl2oPlH1np4uFafHoI=
 		</data>
 		<key>Headers/RPPGCore.h</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		J5KSgs50pIecoFqo3Zkhwg46bXA=
+		hZPHrl7E9ukwECZBigu+hNfjQRQ=
 		</data>
 		<key>Modules/RPPGCore.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		2CcaCYoLIFuYDbKATgmIKs/RP94=
+		HX/RJ0EGuhQzn9koEPZaE5jVCO0=
 		</data>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -38,19 +38,19 @@
 		</data>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		YqjtGxc7mmTw6Azw1e8JMXwSXNE=
+		/PaIpedldw9VES2MNkEC98jBu2U=
 		</data>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		sK6W/alQSMXDWYNNlIbV99kgXYo=
+		eVh9pmsI19PjBKj98BWAN8cNUmw=
 		</data>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		YqjtGxc7mmTw6Azw1e8JMXwSXNE=
+		/PaIpedldw9VES2MNkEC98jBu2U=
 		</data>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		z/pFRxayyrdV+MM6QLfIhs2sP2I=
+		dIJLszNfRUxlbtegLipquugM5/A=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -63,7 +63,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FVVyHPR3kD9KtAjA35xjB5rp3aFXYI0uA9QFTXz4gZk=
+			uPKaAyUstmOg8/iTSTxVCsfyYCkbQty197rZwkdlg/U=
 			</data>
 		</dict>
 		<key>Headers/RPPGCore.h</key>
@@ -98,7 +98,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fe8a+nMqfcOG9pcD3d7myWvtY8UaCA+d6x/+2okK4pw=
+			xFktv6bru4OVZEsiJOtPSgpJXXQ4rEoUADo0Drlve0k=
 			</data>
 		</dict>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -112,28 +112,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hq5zq+79tmcVWin96d2TMtkKQOWs0mo0luZ1G3cfdLQ=
+			WRBl/lWQFAy1x2bxOCRUYgBKjJH3+FBQ5oWoSfPIGEA=
 			</data>
 		</dict>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZmT/9rx92mnqyDkg7Itqm62dPxKb3JG55IFpPtm2p9E=
+			hTJdxCrsNNlkIAl1WfnpynXJxnK0WFFjxuUvQMbpIAA=
 			</data>
 		</dict>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hq5zq+79tmcVWin96d2TMtkKQOWs0mo0luZ1G3cfdLQ=
+			WRBl/lWQFAy1x2bxOCRUYgBKjJH3+FBQ5oWoSfPIGEA=
 			</data>
 		</dict>
 		<key>Modules/RPPGCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z/Ux5UVFk9ImPKLUFIt1rupJSnlnWHhG1R4QKfk3M0c=
+			j1SgaDj5sajSZgb2rXy2TwjijqG/ysWjR6gVkw3TWEw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

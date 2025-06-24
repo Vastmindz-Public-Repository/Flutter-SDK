@@ -5,7 +5,33 @@ import 'package:rppg_common/rppg_common.dart';
 import 'controller/invoke_methods_controller.dart';
 
 void main() {
-  runApp(const GetMaterialApp(home: RPPGExampleApp()));
+  runApp(GetMaterialApp(home: ParentClass()));
+}
+
+class ParentClass extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            Get.off(() => const RPPGExampleApp());
+          },
+          child: Container(
+            alignment: Alignment.center,
+            width: Get.width - 50,
+            height: 50,
+            decoration: BoxDecoration(
+                color: Colors.grey, borderRadius: BorderRadius.circular(20.0)),
+            child: const Text(
+              'Scan',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class RPPGExampleApp extends StatefulWidget {
@@ -57,191 +83,221 @@ class _RPPGExampleAppState extends State<RPPGExampleApp>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: false,
-      body: Obx(
-        () => Stack(
-          children: [
-            /// Black Empty Container
-            Container(
+    return PopScope(
+      canPop: true,
+      onPopInvokedWithResult: (bool didPop, dynamic result)  async {
+        if (didPop) {
+         await invokeMethodController.stopAllProcesses();
+          Get.back();
+        } else {
+          debugPrint('Pop was prevented or failed');
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: GestureDetector(
+            onTap: () async {
+            await invokeMethodController.stopAllProcesses();
+              Get.off(ParentClass());
+            },
+            child: Icon(
+              Icons.arrow_back,
               color: Colors.black,
             ),
+          ),
+        ),
+        extendBodyBehindAppBar: false,
+        body: Obx(
+          () => Stack(
+            children: [
+              /// Black Empty Container
+              Container(
+                color: Colors.black,
+              ),
 
-            /// Camera View
-            const RppgCameraView(),
+              /// Camera View
+              const RppgCameraView(),
 
-            /// Full Bottom View
-            Positioned(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    /// Moving Warning
-                    if (invokeMethodController.isMoveWarning.value == true) Container(
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      height: 33,
-                      color: Colors.redAccent,
-                      child: Text(
-                        "Please keep your face in front of camera",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: fontColorVar,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.00),
-                      ),
-                    ),
-
-                    /// SDK status message banner
-                    if ((invokeMethodController.isMoveWarning.value == false) && (invokeMethodController.statusMessage.value
-                        .toString()
-                        .isNotEmpty))
-                      Container(
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width,
-                        height: 33,
-                        color: (invokeMethodController.statusMessage.value
-                                    .toString() ==
-                                "Analysis Done!!!"
-                                )
-                            ? Colors.green
-                            : blueColor,
-                        child: Text(
-                          invokeMethodController.statusMessage.value.toString(),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: fontColorVar,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.00),
-                        ),
-                      ),
-
-                    const SizedBox(
-                      height: 15,
-                    ),
-
-                    /// Result Progress Bar
-                    if (invokeMethodController.scanResultVisibility.isTrue)
-                      Container(
-                        // width: MediaQuery.of(context).size.width,
-                        // height: 150,
-                        margin: const EdgeInsets.only(top: 12.0, bottom: 5.0),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              buildItem(
-                                  invokeMethodController.avgBpm.value,
-                                  "heart_rate_reading",
-                                  "heart_rate_green",
-                                  "progressHeart",
-                                  "BPM"),
-                              buildItem(
-                                  invokeMethodController
-                                      .avgRespirationRate.value,
-                                  "respiretion_rate_reading",
-                                  "respiration_rate_green",
-                                  "progressResperation",
-                                  "RR"),
-                              buildItem(
-                                  invokeMethodController.bloodPressureSys.value,
-                                  "bp_reading",
-                                  "blood_pressure_green",
-                                  "progressBP",
-                                  "BP",
-                                  secondDataTextValue: invokeMethodController
-                                      .bloodPressureDia.value),
-                              buildItem(
-                                  invokeMethodController.stressStatus.value,
-                                  "stress_index_reading",
-                                  "stress_index_green",
-                                  "progressStress",
-                                  "SI"),
-                              buildItem(
-                                  invokeMethodController
-                                      .avgO2SaturationLevel.value,
-                                  "spo2_reading",
-                                  "spo2_green",
-                                  "progressOxy",
-                                  "SPO2"),
-                              buildItem(
-                                  invokeMethodController.sdnns.value,
-                                  "hrv_reading",
-                                  "hrv_green",
-                                  "progressHRV",
-                                  "HRV"),
-                            ],
+              /// Full Bottom View
+              Positioned(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      /// Moving Warning
+                      if (invokeMethodController.isMoveWarning.value == true)
+                        Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width,
+                          height: 33,
+                          color: Colors.redAccent,
+                          child: Text(
+                            "Please keep your face in front of camera",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: fontColorVar,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.00),
                           ),
                         ),
+
+                      /// SDK status message banner
+                      if ((invokeMethodController.isMoveWarning.value ==
+                              false) &&
+                          (invokeMethodController.statusMessage.value
+                              .toString()
+                              .isNotEmpty))
+                        Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width,
+                          height: 33,
+                          color: (invokeMethodController.statusMessage.value
+                                      .toString() ==
+                                  "Analysis Done!!!")
+                              ? Colors.green
+                              : blueColor,
+                          child: Text(
+                            invokeMethodController.statusMessage.value
+                                .toString(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: fontColorVar,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.00),
+                          ),
+                        ),
+
+                      const SizedBox(
+                        height: 15,
                       ),
 
-                    const SizedBox(
-                      height: 10,
-                    ),
+                      /// Result Progress Bar
+                      if (invokeMethodController.scanResultVisibility.isTrue)
+                        Container(
+                          // width: MediaQuery.of(context).size.width,
+                          // height: 150,
+                          margin: const EdgeInsets.only(top: 12.0, bottom: 5.0),
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                buildItem(
+                                    invokeMethodController.avgBpm.value,
+                                    "heart_rate_reading",
+                                    "heart_rate_green",
+                                    "progressHeart",
+                                    "BPM"),
+                                buildItem(
+                                    invokeMethodController
+                                        .avgRespirationRate.value,
+                                    "respiretion_rate_reading",
+                                    "respiration_rate_green",
+                                    "progressResperation",
+                                    "RR"),
+                                buildItem(
+                                    invokeMethodController
+                                        .bloodPressureSys.value,
+                                    "bp_reading",
+                                    "blood_pressure_green",
+                                    "progressBP",
+                                    "BP",
+                                    secondDataTextValue: invokeMethodController
+                                        .bloodPressureDia.value),
+                                buildItem(
+                                    invokeMethodController.stressStatus.value,
+                                    "stress_index_reading",
+                                    "stress_index_green",
+                                    "progressStress",
+                                    "SI"),
+                                buildItem(
+                                    invokeMethodController
+                                        .avgO2SaturationLevel.value,
+                                    "spo2_reading",
+                                    "spo2_green",
+                                    "progressOxy",
+                                    "SPO2"),
+                                buildItem(
+                                    invokeMethodController.sdnns.value,
+                                    "hrv_reading",
+                                    "hrv_green",
+                                    "progressHRV",
+                                    "HRV"),
+                              ],
+                            ),
+                          ),
+                        ),
 
-                    /// Button View
-                    SizedBox(
-                      width: 200,
-                      height: 60,
-                      child: Column(
-                        children: [
-                          TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(blueColor),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      /// Button View
+                      SizedBox(
+                        width: 200,
+                        height: 60,
+                        child: Column(
+                          children: [
+                            TextButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(blueColor),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: Text(
-                              (invokeMethodController.rppgCommonState.value ==
-                                      "analysisRunning")
-                                  ? "Stop Scanning"
-                                  : invokeMethodController.buttonTitle.value,
-                              style: const TextStyle(
-                                  fontFamily: 'outfit_regular',
-                                  color: Colors.white),
-                            ),
-                            onPressed: () {
-                              if (invokeMethodController
-                                      .rppgCommonState.value ==
-                                  "analysisRunning") {
-
-                                try {
-                                  if (invokeMethodController.timer != null) {
-                                    invokeMethodController.timer!.cancel();
+                              child: Text(
+                                (invokeMethodController.rppgCommonState.value ==
+                                        "analysisRunning")
+                                    ? "Stop Scanning"
+                                    : invokeMethodController.buttonTitle.value,
+                                style: const TextStyle(
+                                    fontFamily: 'outfit_regular',
+                                    color: Colors.white),
+                              ),
+                              onPressed: () {
+                                if (invokeMethodController
+                                        .rppgCommonState.value ==
+                                    "analysisRunning") {
+                                  print("Iff");
+                                  try {
+                                    if (invokeMethodController.timer != null) {
+                                      invokeMethodController.timer!.cancel();
+                                    }
+                                    invokeMethodController.checkLastValues();
+                                    print("try");
+                                    Get.off(ParentClass());
+                                  } catch (e) {
+                                    print("catch");
+                                    invokeMethodController.checkLastValues();
                                   }
-                                  invokeMethodController.checkLastValues();
-
-                                } catch (e) {
-                                  invokeMethodController.checkLastValues();
+                                  print("outside");
+                                  invokeMethodController.statusMessage.value =
+                                      'Scanning stopped';
+                                } else {
+                                  print("ELse");
+                                  invokeMethodController
+                                      .startCircularAnimation();
+                                  invokeMethodController.startSession();
                                 }
-
-                                invokeMethodController.statusMessage.value = 'Scanning stopped';
-
-                              } else {
-                                invokeMethodController.startCircularAnimation();
-                                invokeMethodController.startSession();
-                              }
-                            },
-                          ),
-                        ],
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
-
 
   /// Circular data widget item
   Widget buildItem(String dataTextValue, String firstImage, String secondImage,
@@ -264,20 +320,20 @@ class _RPPGExampleAppState extends State<RPPGExampleApp>
                 ),
               )
             : SizedBox(
-          width: 60,
-              child: Text(
+                width: 60,
+                child: Text(
                   '$dataTextValue ${(secondDataTextValue != "") ? ', $secondDataTextValue' : ""}',
-                  textAlign: TextAlign.center, 
-                textScaler: TextScaler.linear(dataTextValue.length > 6 ? 0.8 : 1),
+                  textAlign: TextAlign.center,
+                  textScaler:
+                      TextScaler.linear(dataTextValue.length > 6 ? 0.8 : 1),
                   softWrap: true,
                   style: const TextStyle(
-                    fontFamily: 'outfit_regular',
-                    color: Colors.white,
-                    fontSize: 13.0,
-                      overflow: TextOverflow.ellipsis
-                  ),
+                      fontFamily: 'outfit_regular',
+                      color: Colors.white,
+                      fontSize: 13.0,
+                      overflow: TextOverflow.ellipsis),
                 ),
-            ),
+              ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 5.3, vertical: 4.0),
           child: Stack(
