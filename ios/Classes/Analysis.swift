@@ -128,7 +128,6 @@ public class Analysis: NSObject {
         /// Check for safe url
         if let safeWebUrl = createURL.webSocketUrl {
             let url = URL(string: safeWebUrl)!
-           
             self.rppgFacade.startAnalysis(socketURL: url)
         }
         

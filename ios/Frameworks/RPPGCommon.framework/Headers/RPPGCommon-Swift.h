@@ -426,10 +426,13 @@ SWIFT_CLASS("_TtC10RPPGCommon23RPPGVideoSessionService")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
+@class AVCaptureOutput;
+@class AVCaptureConnection;
 
 @interface RPPGVideoSessionService (SWIFT_EXTENSION(RPPGCommon)) <AVCaptureVideoDataOutputSampleBufferDelegate>
+- (void)captureOutput:(AVCaptureOutput * _Nonnull)output didOutputSampleBuffer:(CMSampleBufferRef _Nonnull)sampleBuffer fromConnection:(AVCaptureConnection * _Nonnull)connection;
 @end
+
 
 enum CameraPosition : NSInteger;
 

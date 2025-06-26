@@ -3628,39 +3628,6 @@
           {
             "kind": "Function",
             "name": "facade",
-            "printedName": "facade(_:didReceiveEventFromSocket:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "RPPGCommonFacade",
-                "printedName": "RPPGCommon.RPPGCommonFacade",
-                "usr": "c:@M@RPPGCommon@objc(cs)RPPGCommonFacade"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "RPPGSocketEvent",
-                "printedName": "RPPGCommon.RPPGSocketEvent",
-                "usr": "s:10RPPGCommon15RPPGSocketEventO"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:10RPPGCommon0A14FacadeDelegateP6facade_25didReceiveEventFromSocketyAA0aB0C_AA010RPPGSocketG0OtF",
-            "mangledName": "$s10RPPGCommon0A14FacadeDelegateP6facade_25didReceiveEventFromSocketyAA0aB0C_AA010RPPGSocketG0OtF",
-            "moduleName": "RPPGCommon",
-            "genericSig": "<τ_0_0 where τ_0_0 : RPPGCommon.RPPGCommonFacadeDelegate>",
-            "sugared_genericSig": "<Self where Self : RPPGCommon.RPPGCommonFacadeDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "facade",
             "printedName": "facade(_:didReceiveEventFromSocket:sampleBuffer:)",
             "children": [
               {
@@ -10476,13 +10443,6 @@
         "moduleName": "RPPGCommon"
       },
       {
-        "kind": "Import",
-        "name": "WebKit",
-        "printedName": "WebKit",
-        "declKind": "Import",
-        "moduleName": "RPPGCommon"
-      },
-      {
         "kind": "TypeDecl",
         "name": "RPPGSocketManagerDelegate",
         "printedName": "RPPGSocketManagerDelegate",
@@ -12447,33 +12407,6 @@
             ]
           },
           {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "RPPGVideoSessionService",
-                "printedName": "RPPGCommon.RPPGVideoSessionService",
-                "usr": "c:@M@RPPGCommon@objc(cs)RPPGVideoSessionService"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "c:@M@RPPGCommon@objc(cs)RPPGVideoSessionService(im)init",
-            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceCACycfc",
-            "moduleName": "RPPGCommon",
-            "overriding": true,
-            "objc_name": "init",
-            "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Override",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "init_kind": "Designated"
-          },
-          {
             "kind": "Function",
             "name": "prepare",
             "printedName": "prepare(settings:)",
@@ -12607,43 +12540,30 @@
             "funcSelfKind": "NonMutating"
           },
           {
-            "kind": "Function",
-            "name": "captureOutput",
-            "printedName": "captureOutput(_:didDrop:from:)",
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "AVCaptureOutput",
-                "printedName": "AVFoundation.AVCaptureOutput",
-                "usr": "c:objc(cs)AVCaptureOutput"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CMSampleBuffer",
-                "printedName": "CoreMedia.CMSampleBuffer",
-                "usr": "c:@T@CMSampleBufferRef"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "AVCaptureConnection",
-                "printedName": "AVFoundation.AVCaptureConnection",
-                "usr": "c:objc(cs)AVCaptureConnection"
+                "name": "RPPGVideoSessionService",
+                "printedName": "RPPGCommon.RPPGVideoSessionService",
+                "usr": "c:@M@RPPGCommon@objc(cs)RPPGVideoSessionService"
               }
             ],
-            "declKind": "Func",
-            "usr": "s:10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_7didDrop4fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0J10ConnectionCtYaF",
-            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_7didDrop4fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0J10ConnectionCtYaF",
+            "declKind": "Constructor",
+            "usr": "c:@M@RPPGCommon@objc(cs)RPPGVideoSessionService(im)init",
+            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceCACycfc",
             "moduleName": "RPPGCommon",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
             "declAttributes": [
-              "AccessControl"
+              "Dynamic",
+              "ObjC",
+              "Override"
             ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
+            "init_kind": "Designated"
           },
           {
             "kind": "Function",
@@ -12675,10 +12595,13 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_03didF04fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0I10ConnectionCtYaF",
-            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_03didF04fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0I10ConnectionCtYaF",
+            "usr": "c:@CM@RPPGCommon@objc(cs)RPPGVideoSessionService(im)captureOutput:didOutputSampleBuffer:fromConnection:",
+            "mangledName": "$s10RPPGCommon23RPPGVideoSessionServiceC13captureOutput_03didF04fromySo09AVCaptureF0C_So17CMSampleBufferRefaSo0I10ConnectionCtF",
             "moduleName": "RPPGCommon",
+            "objc_name": "captureOutput:didOutputSampleBuffer:fromConnection:",
             "declAttributes": [
+              "Dynamic",
+              "ObjC",
               "AccessControl"
             ],
             "isFromExtension": true,
@@ -14316,7 +14239,7 @@
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/FaceDetector\/Model\/RPPGStaticFaceMesh.swift",
       "kind": "IntegerLiteral",
-      "offset": 786,
+      "offset": 766,
       "length": 3,
       "value": "132"
     },
@@ -14477,42 +14400,42 @@
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 4419,
+      "offset": 4280,
       "length": 53,
       "value": "\"delegate is set to: \""
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 4471,
+      "offset": 4332,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 4649,
+      "offset": 4464,
       "length": 65,
       "value": "\"diagnostics delegate is set to: \""
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 4713,
+      "offset": 4528,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 5343,
+      "offset": 5158,
       "length": 28,
       "value": "\"CFBundleShortVersionString\""
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/RPPGCommonFacade.swift",
       "kind": "StringLiteral",
-      "offset": 5388,
+      "offset": 5203,
       "length": 5,
       "value": "\"---\""
     },
@@ -14778,56 +14701,56 @@
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 914,
+      "offset": 901,
       "length": 4,
       "value": "4404"
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 1160,
+      "offset": 1147,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 1198,
+      "offset": 1185,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 1255,
+      "offset": 1242,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1301,
+      "offset": 1288,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "StringLiteral",
-      "offset": 1846,
+      "offset": 1833,
       "length": 53,
       "value": "\"delegate was set to \""
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "StringLiteral",
-      "offset": 1898,
+      "offset": 1885,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/richa\/Documents\/vastmind\/rPPG-Mobile-Frameworks-iOS\/Common\/RPPGCommon\/RPPGCommon\/Socket\/RPPGSocketManager.swift",
       "kind": "StringLiteral",
-      "offset": 7704,
+      "offset": 7465,
       "length": 2,
       "value": "\"\""
     },

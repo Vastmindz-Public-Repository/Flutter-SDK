@@ -14,7 +14,6 @@ import RPPGCore
 import Starscream
 import Swift
 import UIKit
-import WebKit
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
@@ -130,7 +129,6 @@ public struct RPPGDetectedFaceContour {
   }
 }
 public protocol RPPGCommonFacadeDelegate : AnyObject {
-  func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveEventFromSocket event: RPPGCommon.RPPGSocketEvent)
   func facade(_ facade: RPPGCommon.RPPGCommonFacade, didReceiveEventFromSocket event: RPPGCommon.RPPGSocketEvent, sampleBuffer: CoreMedia.CMSampleBuffer)
   func facade(_ facade: RPPGCommon.RPPGCommonFacade, analysisInterrupted reason: RPPGCommon.RPPGAnalysisInterruptionReason, error: (any Swift.Error)?)
 }
@@ -429,15 +427,14 @@ public protocol RPPGVideoSessionServiceDelegate : AnyObject {
   public var cameraView: RPPGCommon.RPPGCameraView {
     get
   }
-  @objc override dynamic public init()
   public func prepare(settings: RPPGCommon.RPPGVideoSessionSettings = .default) -> Swift.Result<Swift.Void, RPPGCommon.RPPGVideoSessionServiceError>
   public func askPermissions(completion: @escaping (Swift.Bool) -> Swift.Void)
   public func start() -> Swift.Result<Swift.Void, RPPGCommon.RPPGVideoSessionServiceError>
   public func stop()
+  @objc override dynamic public init()
 }
 extension RPPGCommon.RPPGVideoSessionService : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
-  public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didDrop sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection) async
-  public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection) async
+  @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
 }
 public struct RPPGImageQualityData {
   public let isBrightColor: Swift.Bool
